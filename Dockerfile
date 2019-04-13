@@ -24,7 +24,7 @@ php7-zlib && \
 php7 -r "copy('http://getcomposer.org/installer', 'composer-setup.php');" && \
 php7 composer-setup.php --install-dir=/usr/bin --filename=composer && \
 php7 -r "unlink('composer-setup.php');" && \
-# ln -s /usr/bin/php7 /usr/bin/php && \
+ln -s /usr/bin/php7 /usr/bin/php && \
 ln -s /etc/php7/php.ini /etc/php7/conf.d/php.ini
 
 RUN apk add --update \
