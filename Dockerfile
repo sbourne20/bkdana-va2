@@ -9,7 +9,6 @@ COPY nginx.conf /etc/nginx/nginx.conf
 COPY supervisord.conf /etc/supervisord.conf
 COPY site.conf /etc/nginx/sites-available/default.conf
 COPY start.sh /var/www
-COPY --from=build /src /var/www
 
 
 EXPOSE 443 80
