@@ -7,7 +7,7 @@
 if [[ ! -f "/var/www/.env" ]] && [[ -f "/var/www/.env.example" ]];
 then
 cp /var/www/.env.example /var/www/.env
-cp composer.json /var/www
+
 fi
 
 # ----------------------------------------------------------------------
@@ -16,6 +16,7 @@ fi
 
 if [[ ! -d "/var/www/vendor" ]];
 then
+cp composer.json /var/www
 cd /var/www
 composer update
 composer dump-autoload -o
