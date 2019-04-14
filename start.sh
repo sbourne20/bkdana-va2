@@ -16,7 +16,6 @@ fi
 
 if [[ ! -d "/var/www/vendor" ]];
 then
-cp composer.json /var/www
 cd /var/www
 composer update
 composer dump-autoload -o
