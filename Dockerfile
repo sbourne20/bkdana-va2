@@ -58,6 +58,7 @@ sed -i -e "s/;daemonize\s*=\s*yes/daemonize = no/g" \
 
 EXPOSE 443 80
 WORKDIR /var/www
+COPY . /var/www
 
 CMD ["/start.sh"]
 
