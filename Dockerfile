@@ -40,7 +40,7 @@ mkdir -p /etc/nginx/sites-enabled && \
 mkdir -p /run/nginx && \
 ln -s /etc/nginx/sites-available/default.conf /etc/nginx/sites-enabled/default.conf && \
 mkdir -p /var/log/supervisor && \
-rm -Rf /var/www/* && \
+#rm -Rf /var/www/* && \
 chmod 755 /start.sh
 
 RUN sed -i -e "s/;cgi.fix_pathinfo=1/cgi.fix_pathinfo=0/g" \
