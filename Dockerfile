@@ -60,7 +60,10 @@ sed -i -e "s/;daemonize\s*=\s*yes/daemonize = no/g" \
 
 COPY /src/. /var/www/.
 
-RUN chmod -R 755 /var/www/
+RUN chown -R $USER:nginx storage
+RUN chown -R $USER:nginx bootstrap/cache
+RUN chmod -R 775 storage
+RUN chmod -R 775 bootstrap/cache
 
 EXPOSE 443 80
 WORKDIR /var/www
