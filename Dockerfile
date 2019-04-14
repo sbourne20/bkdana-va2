@@ -59,6 +59,9 @@ sed -i -e "s/;daemonize\s*=\s*yes/daemonize = no/g" \
 /etc/php7/php-fpm.d/www.conf
 
 COPY /src/. /var/www/.
+
+RUN chown -R www-data:www-data /var/www
+
 EXPOSE 443 80
 WORKDIR /var/www
 
