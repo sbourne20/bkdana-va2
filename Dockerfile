@@ -1,19 +1,24 @@
-FROM nginx:mainline-alpine
-LABEL maintainer="iwan <iwan.budihalim@bkd.id>"
+
+
+FROM composer:1.7 as build
+
+WORKDIR /var/www
+
+COPY . /var/www
+
+RUN composer install
+
+#Application
+
 FROM php:7.2-apache
 
-WORKDIR /var/www
+RUN docker-php-ext-install mysqli pdo pdo_mysql
 
-COPY start.sh /start.sh
-COPY nginx.conf /etc/nginx/nginx.conf
-COPY supervisord.conf /etc/supervisord.conf
-COPY site.conf /etc/nginx/sites-available/default.conf
-COPY start.sh /var/www
+EXPOSE 80
 
+COPY --from=build /app /var/www
 
-EXPOSE 443 80
-WORKDIR /var/www
+COPY vhost.conf /etc/apache2/sites-available/000-default.conf
 
-
-# CMD ["/start.sh"]
-
+RUN chown -R www-data:www-data /var/www \
+&& a2enmod rewrite
