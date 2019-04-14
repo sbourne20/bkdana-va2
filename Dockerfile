@@ -54,7 +54,7 @@ sed -i -e "s/;daemonize\s*=\s*yes/daemonize = no/g" \
 -e "s/;listen.mode = 0660/listen.mode = 0666/g" \
 -e "s/;listen.owner = nobody/listen.owner = nginx/g" \
 -e "s/;listen.group = nobody/listen.group = nginx/g" \
--e "s/listen = 127.0.0.1:8001/listen = \/var\/run\/php-fpm.sock/g" \
+-e "s/listen = 127.0.0.1:9000/listen = \/var\/run\/php-fpm.sock/g" \
 -e "s/^;clear_env = no$/clear_env = no/" \
 /etc/php7/php-fpm.d/www.conf
 
