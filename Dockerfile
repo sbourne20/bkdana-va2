@@ -4,6 +4,7 @@ COPY start.sh /start.sh
 COPY nginx.conf /etc/nginx/nginx.conf
 COPY supervisord.conf /etc/supervisord.conf
 COPY site.conf /etc/nginx/sites-available/default.conf
+COPY . /var/www
 
 RUN apk add --update \
 php7 \
@@ -58,7 +59,7 @@ sed -i -e "s/;daemonize\s*=\s*yes/daemonize = no/g" \
 
 EXPOSE 443 80
 WORKDIR /var/www
-COPY . /var/www
+
 
 CMD ["/start.sh"]
 
