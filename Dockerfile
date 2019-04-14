@@ -2,9 +2,9 @@
 
 FROM composer:1.7 as build
 
-WORKDIR /var/www
+WORKDIR /app
 
-COPY . /var/www
+COPY . /app
 
 RUN composer install
 
@@ -16,7 +16,7 @@ RUN docker-php-ext-install mysqli pdo pdo_mysql
 
 EXPOSE 80
 
-COPY --from=build /app /var/www
+COPY --from=build /app /app
 
 COPY vhost.conf /etc/apache2/sites-available/000-default.conf
 
