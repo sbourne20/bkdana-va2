@@ -17,7 +17,6 @@ fi
 if [[ ! -d "/var/www/vendor" ]];
 then
 cd /var/www
-cd /var/www
 composer update
 composer dump-autoload -o
 fi
